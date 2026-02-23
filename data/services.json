@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "web-design",
+    "title": "Web Design",
+    "shortDescription": "Clean, mobile-first websites that turn visitors into calls and leads.",
+    "keywords": ["web design", "website", "local business website", "mobile-first"],
+    "faq": [
+      { "q": "How long does a website take?", "a": "Typically 1–2 weeks from kickoff to launch, depending on pages and revisions." },
+      { "q": "Do you host the site?", "a": "We can set up hosting (e.g. Netlify, Vercel) or connect to your existing host." },
+      { "q": "What's included?", "a": "Mobile-first layout, contact form, click-to-call, basic SEO, and simple updates." }
+    ]
+  },
+  {
+    "slug": "local-seo",
+    "title": "Local SEO",
+    "shortDescription": "On-page SEO and Google Business Profile setup so you show up in local search.",
+    "keywords": ["local SEO", "Google Business", "local search", "SEO"],
+    "faq": [
+      { "q": "What is local SEO?", "a": "Optimizing your site and profile so nearby customers find you when they search for your services." },
+      { "q": "Do you manage Google Business Profile?", "a": "We set it up and can advise on posts and reviews; ongoing management can be added." }
+    ]
+  },
+  {
+    "slug": "landing-pages",
+    "title": "Ad Landing Pages",
+    "shortDescription": "Focused pages built to convert paid clicks into leads and calls.",
+    "keywords": ["landing page", "PPC", "ads", "conversion"],
+    "faq": [
+      { "q": "How is this different from a full website?", "a": "One clear goal per page (e.g. quote request), minimal distraction, built for ad traffic." }
+    ]
+  }
+]

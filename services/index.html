@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services | KWebDevelopment — Web Design &amp; Local SEO</title>
+  <meta name="description" content="Web design, local SEO, and landing pages for local businesses in Texas. Mobile-first, fast, and built to convert." />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../assets/css/toolkit.css" />
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="logo"><a href="../index.html">KWebDevelopment</a></div>
+      <div class="links">
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#contact">Contact</a>
+        <a href="../areas/index.html">Service Areas</a>
+      </div>
+      <div class="nav-cta tk-nav-cta">
+        <a class="btn tk-btn-call" href="#">Call</a>
+        <a class="btn primary tk-btn-quote" href="../index.html#contact" data-tk-open-lead>Get Free Quote</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap" style="padding: 48px 20px;">
+    <h1 style="margin: 0 0 8px;">Our services</h1>
+    <p class="muted">Web design, local SEO, and conversion-focused pages for local businesses.</p>
+
+    <div class="grid cards top16" id="tk-services-list">
+      <div class="card">
+        <strong><a href="web-design/" class="link">Web Design</a></strong>
+        <p class="muted">Clean, mobile-first websites that turn visitors into calls and leads.</p>
+      </div>
+      <div class="card">
+        <strong><a href="local-seo/" class="link">Local SEO</a></strong>
+        <p class="muted">On-page SEO and Google Business Profile setup for local search.</p>
+      </div>
+      <div class="card">
+        <strong><a href="landing-pages/" class="link">Ad Landing Pages</a></strong>
+        <p class="muted">Focused pages built to convert paid clicks into leads and calls.</p>
+      </div>
+    </div>
+
+    <p class="top16"><a href="../index.html#contact" class="btn primary tk-btn-quote" data-tk-open-lead>Get a Free Quote</a></p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap small">
+    <a href="../privacy.html">Privacy &amp; SMS</a> · <a href="../review.html">Leave a review</a> · Built by KWebDevelopment · TX / DFW
+  </div>
+</footer>
+
+<div id="tk-fab-wrap" class="tk-fab-wrap" aria-hidden="true">
+  <a href="#" class="tk-fab" aria-label="Call us">&#x260E;</a>
+</div>
+
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/toolkit.js"></script>
+<script>
+  (function () {
+    fetch('../data/services.json').then(function (r) { return r.json(); }).catch(function () { return []; }).then(function (arr) {
+      var wrap = document.getElementById('tk-services-list');
+      if (!wrap || !arr.length) return;
+      wrap.innerHTML = arr.map(function (s) {
+        return '<div class="card"><strong><a href="' + (s.slug || '') + '/" class="link">' + (s.title || s.slug) + '</a></strong><p class="muted">' + (s.shortDescription || '') + '</p></div>';
+      }).join('');
+    });
+  })();
+</script>
+</body>
+</html>

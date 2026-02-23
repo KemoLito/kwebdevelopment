@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy &amp; SMS | KWebDevelopment</title>
+  <meta name="description" content="Privacy policy and SMS consent for KWebDevelopment. How we use your data and how to opt out of text messages." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="assets/css/toolkit.css" />
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="logo"><a href="index.html">KWebDevelopment</a></div>
+      <div class="links">
+        <a href="index.html#services">Services</a>
+        <a href="services/index.html">All Services</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+      <div class="nav-cta tk-nav-cta">
+        <a class="btn tk-btn-call" href="#">Call</a>
+        <a class="btn primary tk-btn-quote" href="index.html#contact" data-tk-open-lead>Get Free Quote</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap" style="padding: 48px 20px; max-width: 720px;">
+    <h1 style="margin: 0 0 8px;">Privacy &amp; SMS</h1>
+    <p class="muted">Last updated: <span id="privacy-date"></span></p>
+
+    <section style="margin-top: 32px;">
+      <h2 style="font-size: 1.25rem;">Information we collect</h2>
+      <p>When you contact us via the website (forms, click-to-call, or email), we may collect your name, phone number, email, and any details you provide about your project. We use this to respond to your request and to follow up as needed.</p>
+    </section>
+
+    <section style="margin-top: 24px;">
+      <h2 style="font-size: 1.25rem;">SMS / text messaging</h2>
+      <p>If you opt in to receive text messages (e.g. by checking the consent box on our forms), we may send you:</p>
+      <ul>
+        <li>Confirmations and appointment reminders</li>
+        <li>Follow-up messages after a quote or project</li>
+        <li>Occasional offers or seasonal campaigns (e.g. referral discounts)</li>
+      </ul>
+      <p><strong>Message and data rates may apply.</strong> Frequency varies. You can opt out at any time by replying <strong>STOP</strong> to any message. Reply <strong>HELP</strong> for support.</p>
+      <p>We do not sell your phone number to third parties for marketing.</p>
+    </section>
+
+    <section style="margin-top: 24px;">
+      <h2 style="font-size: 1.25rem;">Missed-call and text-back</h2>
+      <p>If you call us and we miss your call, our system may send you an automated text to offer a callback. This is handled by our phone/CRM provider (e.g. GoHighLevel, Twilio, CallRail). By calling our number, you agree to potentially receive such a follow-up text. You can opt out by replying STOP.</p>
+    </section>
+
+    <section style="margin-top: 24px;">
+      <h2 style="font-size: 1.25rem;">Contact</h2>
+      <p>Questions about privacy or SMS? <a href="index.html#contact" class="link">Contact us</a> or call us. You can also <a href="#" class="tk-text-us link">text us</a> (opens your SMS app).</p>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap small">
+    <a href="index.html">Home</a> · Built by KWebDevelopment · TX / DFW
+  </div>
+</footer>
+
+<div id="tk-lead-modal" class="tk-modal-overlay" aria-hidden="true" aria-modal="true" role="dialog" aria-labelledby="tk-lead-modal-title">
+  <div class="tk-modal">
+    <div class="tk-modal-header">
+      <h2 id="tk-lead-modal-title">Get a Free Quote</h2>
+      <button type="button" class="tk-modal-close" data-tk-close-lead aria-label="Close modal">&times;</button>
+    </div>
+    <div class="tk-modal-body">
+      <form id="tk-lead-form">
+        <div class="tk-form-group"><label for="tk-lead-name">Name <span class="required">*</span></label><input type="text" id="tk-lead-name" name="name" required autocomplete="name" /></div>
+        <div class="tk-form-group"><label for="tk-lead-phone">Phone <span class="required">*</span></label><input type="tel" id="tk-lead-phone" name="phone" required autocomplete="tel" placeholder="(555) 123-4567" /></div>
+        <div class="tk-form-group"><label for="tk-lead-service">Service needed <span class="required">*</span></label><select id="tk-lead-service" name="serviceNeeded" required><option value="">Loading…</option></select></div>
+        <div class="tk-form-group"><label for="tk-lead-zip">City or ZIP <span class="required">*</span></label><input type="text" id="tk-lead-zip" name="zipOrCity" required placeholder="Dallas or 75201" /></div>
+        <div class="tk-form-group"><label for="tk-lead-date">Preferred date</label><input type="date" id="tk-lead-date" name="preferredDate" /></div>
+        <div class="tk-form-group"><label for="tk-lead-time">Preferred time</label><input type="time" id="tk-lead-time" name="preferredTime" /></div>
+        <div class="tk-form-group"><label for="tk-lead-notes">Notes</label><textarea id="tk-lead-notes" name="notes" rows="3" placeholder="Brief description"></textarea></div>
+        <div class="tk-form-group tk-checkbox-wrap"><input type="checkbox" id="tk-lead-sms" name="smsConsent" /><label for="tk-lead-sms"><span class="tk-consent-text">By checking this box, you agree to receive text messages. Msg &amp; data rates may apply. Reply STOP to opt out.</span></label></div>
+        <div class="tk-submit-wrap"><button type="submit" class="tk-btn-submit">Get Free Quote</button></div>
+        <div class="tk-message success" role="status"></div>
+        <div class="tk-message error" role="alert"></div>
+        <div class="tk-message not-configured" role="status"></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="tk-fab-wrap" class="tk-fab-wrap" aria-hidden="true">
+  <a href="#" class="tk-fab" aria-label="Call us">&#x260E;</a>
+</div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/toolkit.js"></script>
+<script>
+  document.getElementById('privacy-date').textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+</script>
+</body>
+</html>

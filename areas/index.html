@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Service Areas | KWebDevelopment — Dallas, Fort Worth, DFW</title>
+  <meta name="description" content="We serve Dallas, Fort Worth, Plano, Arlington, Frisco and the greater DFW area. Local web design and SEO for Texas businesses." />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../assets/css/toolkit.css" />
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="logo"><a href="../index.html">KWebDevelopment</a></div>
+      <div class="links">
+        <a href="../index.html#services">Services</a>
+        <a href="../services/index.html">All Services</a>
+        <a href="../index.html#contact">Contact</a>
+      </div>
+      <div class="nav-cta tk-nav-cta">
+        <a class="btn tk-btn-call" href="#">Call</a>
+        <a class="btn primary tk-btn-quote" href="../index.html#contact" data-tk-open-lead>Get Free Quote</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap" style="padding: 48px 20px;">
+    <h1 style="margin: 0 0 8px;">Areas we serve</h1>
+    <p class="muted">Web design and local SEO for businesses across the Dallas–Fort Worth area.</p>
+
+    <div class="grid cards top16" id="tk-areas-list">
+      <div class="card"><strong><a href="dallas/" class="link">Dallas</a></strong></div>
+      <div class="card"><strong><a href="fort-worth/" class="link">Fort Worth</a></strong></div>
+      <div class="card"><strong><a href="plano/" class="link">Plano</a></strong></div>
+      <div class="card"><strong><a href="arlington/" class="link">Arlington</a></strong></div>
+      <div class="card"><strong><a href="frisco/" class="link">Frisco</a></strong></div>
+    </div>
+
+    <p class="top16"><a href="../index.html#contact" class="btn primary tk-btn-quote" data-tk-open-lead>Get a Free Quote</a></p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap small">
+    <a href="../privacy.html">Privacy &amp; SMS</a> · <a href="../review.html">Leave a review</a> · Built by KWebDevelopment · TX / DFW
+  </div>
+</footer>
+
+<div id="tk-fab-wrap" class="tk-fab-wrap" aria-hidden="true">
+  <a href="#" class="tk-fab" aria-label="Call us">&#x260E;</a>
+</div>
+
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/toolkit.js"></script>
+<script>
+  (function () {
+    fetch('../data/areas.json').then(function (r) { return r.json(); }).catch(function () { return []; }).then(function (arr) {
+      var wrap = document.getElementById('tk-areas-list');
+      if (!wrap || !arr.length) return;
+      wrap.innerHTML = arr.map(function (a) {
+        return '<div class="card"><strong><a href="' + (a.slug || '') + '/" class="link">' + (a.name || a.slug) + '</a></strong></div>';
+      }).join('');
+    });
+  })();
+</script>
+</body>
+</html>

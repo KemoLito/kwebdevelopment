@@ -1,0 +1,482 @@
+/* Retention + Local SEO Toolkit — mobile-first */
+
+:root {
+  --tk-header-h: 64px;
+  --tk-modal-z: 1000;
+  --tk-overlay-z: 999;
+  --tk-fab-size: 56px;
+  --tk-focus-ring: 2px solid currentColor;
+  --tk-radius: 10px;
+  --tk-radius-lg: 16px;
+}
+
+/* Scroll margin so fixed header doesn’t cover section headings */
+section[id],
+[id].scroll-margin {
+  scroll-margin-top: calc(var(--tk-header-h, 64px) + 12px);
+}
+
+/* Sticky header already in base; ensure CTA buttons are visible */
+.tk-nav-cta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tk-btn-call,
+.tk-btn-quote {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: var(--tk-radius);
+  font-weight: 700;
+  white-space: nowrap;
+  border: 1px solid #111;
+  background: #fff;
+  color: #111;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.tk-btn-call:hover,
+.tk-btn-quote:hover {
+  background: #f5f5f5;
+}
+
+.tk-btn-quote.primary,
+.tk-btn-quote.tk-primary {
+  background: #111;
+  color: #fff;
+}
+
+.tk-btn-quote.primary:hover,
+.tk-btn-quote.tk-primary:hover {
+  background: #333;
+}
+
+.tk-btn-call:focus-visible,
+.tk-btn-quote:focus-visible,
+.tk-fab:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--tk-focus-ring);
+}
+
+/* Floating call button (mobile) */
+.tk-fab-wrap {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  display: none;
+}
+
+.tk-fab-wrap.visible {
+  display: block;
+}
+
+.tk-fab {
+  width: var(--tk-fab-size);
+  height: var(--tk-fab-size);
+  border-radius: 50%;
+  background: #111;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 24px;
+  line-height: 1;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.tk-fab:hover {
+  background: #333;
+}
+
+.tk-fab svg {
+  width: 24px;
+  height: 24px;
+}
+
+@media (min-width: 901px) {
+  .tk-fab-wrap.visible-mobile-only {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .tk-fab-wrap.visible-mobile-only.visible {
+    display: block;
+  }
+}
+
+/* Modal overlay */
+.tk-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: var(--tk-overlay-z);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.tk-modal-overlay.visible {
+  display: flex;
+}
+
+.tk-modal-overlay[aria-hidden="true"] {
+  display: none;
+}
+
+/* Modal panel */
+.tk-modal {
+  background: #fff;
+  border-radius: var(--tk-radius-lg);
+  max-width: 440px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  z-index: var(--tk-modal-z);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.tk-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.tk-modal-header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.tk-modal-close {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: var(--tk-radius);
+  font-size: 24px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tk-modal-close:hover {
+  background: #f0f0f0;
+}
+
+.tk-modal-close:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--tk-focus-ring);
+}
+
+.tk-modal-body {
+  padding: 20px;
+}
+
+/* Form fields */
+.tk-form-group {
+  margin-bottom: 16px;
+}
+
+.tk-form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.tk-form-group label .required {
+  color: #c00;
+}
+
+.tk-form-group input,
+.tk-form-group select,
+.tk-form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: var(--tk-radius);
+  font-size: 16px;
+  font-family: inherit;
+}
+
+.tk-form-group input:focus,
+.tk-form-group select:focus,
+.tk-form-group textarea:focus {
+  outline: none;
+  border-color: #111;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+}
+
+.tk-form-group input.error,
+.tk-form-group select.error,
+.tk-form-group textarea.error {
+  border-color: #c00;
+}
+
+.tk-form-group .hint {
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.tk-checkbox-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.tk-checkbox-wrap input[type="checkbox"] {
+  width: auto;
+  margin-top: 4px;
+}
+
+.tk-checkbox-wrap label {
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+.tk-consent-text {
+  font-size: 12px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.tk-submit-wrap {
+  margin-top: 20px;
+}
+
+.tk-btn-submit {
+  width: 100%;
+  padding: 14px;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: var(--tk-radius);
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.tk-btn-submit:hover {
+  background: #333;
+}
+
+.tk-btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.tk-btn-submit:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--tk-focus-ring);
+}
+
+/* Success / error messages */
+.tk-message {
+  padding: 16px;
+  border-radius: var(--tk-radius);
+  margin-top: 16px;
+  display: none;
+}
+
+.tk-message.visible {
+  display: block;
+}
+
+.tk-message.success {
+  background: #e8f5e9;
+  border: 1px solid #a5d6a7;
+  color: #1b5e20;
+}
+
+.tk-message.error {
+  background: #ffebee;
+  border: 1px solid #ef9a9a;
+  color: #b71c1c;
+}
+
+.tk-message.not-configured {
+  background: #fff3e0;
+  border: 1px solid #ffcc80;
+  color: #e65100;
+}
+
+/* Review funnel */
+.tk-review-stars {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin: 24px 0;
+}
+
+.tk-review-stars button {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #ddd;
+  background: #fff;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.tk-review-stars button:hover {
+  border-color: #111;
+  background: #f5f5f5;
+}
+
+.tk-review-stars button[aria-pressed="true"],
+.tk-review-stars button.selected {
+  background: #ffc107;
+  border-color: #ffc107;
+}
+
+.tk-review-stars button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--tk-focus-ring);
+}
+
+.tk-review-step2 {
+  display: none;
+}
+
+.tk-review-step2.visible {
+  display: block;
+}
+
+.tk-review-google-btn {
+  display: inline-block;
+  padding: 16px 24px;
+  background: #4285f4;
+  color: #fff;
+  border-radius: var(--tk-radius);
+  font-weight: 700;
+  text-decoration: none;
+  margin: 16px 0;
+}
+
+.tk-review-google-btn:hover {
+  background: #3367d6;
+}
+
+.tk-review-google-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--tk-focus-ring);
+}
+
+/* Discount / referral page */
+.tk-offer-card {
+  border: 2px solid #111;
+  border-radius: var(--tk-radius-lg);
+  padding: 24px;
+  margin: 24px 0;
+  text-align: center;
+}
+
+.tk-referral-result {
+  display: none;
+  margin-top: 24px;
+}
+
+.tk-referral-result.visible {
+  display: block;
+}
+
+.tk-referral-code {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  padding: 12px;
+  background: #f5f5f5;
+  border-radius: var(--tk-radius);
+  margin: 12px 0;
+}
+
+.tk-copy-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.tk-copy-btn {
+  padding: 10px 16px;
+  border: 1px solid #111;
+  border-radius: var(--tk-radius);
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.tk-copy-btn:hover {
+  background: #f0f0f0;
+}
+
+/* Text us button */
+.tk-text-us {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid #111;
+  border-radius: var(--tk-radius);
+  background: #fff;
+  color: #111;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.tk-text-us:hover {
+  background: #f5f5f5;
+}
+
+/* Review request link section */
+.tk-review-request-section {
+  background: #f9f9f9;
+  border-radius: var(--tk-radius-lg);
+  padding: 20px;
+  margin: 24px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.tk-review-request-section strong {
+  color: #111;
+}
+
+/* Nav toggle for mobile (if used) */
+.tk-nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.tk-nav-toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--tk-focus-ring);
+}
+
+@media (max-width: 900px) {
+  .tk-nav-toggle {
+    display: block;
+  }
+}

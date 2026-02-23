@@ -6,6 +6,7 @@
   <title>KWebDevelopment | TX Web Design for Local Businesses</title>
   <meta name="description" content="KWebDevelopment builds fast, modern websites for local businesses in Texas. Mobile-first design, speed, and SEO basics included." />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="assets/css/toolkit.css" />
 </head>
 
 <body>
@@ -21,9 +22,9 @@
         <a href="#contact">Contact</a>
       </div>
 
-      <div class="nav-cta">
-        <a class="btn" href="tel:14694436874">Call (469) 443-6874</a>
-        <a class="btn primary" href="#contact">Get a Quote</a>
+      <div class="nav-cta tk-nav-cta">
+        <a class="btn tk-btn-call" href="#" data-tk-call>Call</a>
+        <a class="btn primary tk-btn-quote" href="#contact" data-tk-open-lead>Get Free Quote</a>
       </div>
     </nav>
   </div>
@@ -41,11 +42,11 @@
         </p>
 
         <div class="cta-row">
-          <a class="btn primary" href="#contact">Get a Free Quote</a>
-          <a class="btn" href="tel:14694436874">Call (469) 443-6874</a>
+          <a class="btn primary tk-btn-quote" href="#contact" data-tk-open-lead>Get a Free Quote</a>
+          <a class="btn tk-btn-call" href="#">Call</a>
         </div>
 
-        <p class="muted top12">Email: kwebdevelopmenttx@gmail.com</p>
+        <p class="muted top12">Email: kwebdevelopmenttx@gmail.com · <a href="privacy.html" class="link">Privacy</a></p>
       </div>
 
       <div class="card">
@@ -61,7 +62,7 @@
     </div>
   </div>
 
-  <section id="services">
+  <section id="services" class="scroll-margin">
     <div class="wrap">
       <h2>Services</h2>
       <p class="muted">Simple packages that help local businesses in TX get more leads.</p>
@@ -95,7 +96,7 @@
     </div>
   </section>
 
-  <section id="process">
+  <section id="process" class="scroll-margin">
     <div class="wrap">
       <h2>How it works</h2>
 
@@ -120,7 +121,7 @@
     </div>
   </section>
 
-  <section id="pricing">
+  <section id="pricing" class="scroll-margin">
     <div class="wrap">
       <h2>Pricing</h2>
       <p class="muted">Starting points. Final price depends on pages + features.</p>
@@ -142,7 +143,7 @@
     </div>
   </section>
 
-  <section id="contact">
+  <section id="contact" class="scroll-margin">
     <div class="wrap">
       <h2>Contact</h2>
       <p class="muted">Tell me what you need and I’ll reply with next steps.</p>
@@ -150,7 +151,7 @@
       <div class="grid two top16">
         <div class="card">
           <strong>Call / Text</strong>
-          <p class="muted top8"><a class="link" href="tel:14694436874">(469) 443-6874</a></p>
+          <p class="muted top8"><a class="link tk-btn-call" href="#">Call</a> · <a href="#" class="link tk-text-us">Text us</a></p>
           <p class="muted">Best for quick quotes.</p>
         </div>
 
@@ -180,6 +181,68 @@
   </div>
 </footer>
 
+  <!-- Lead modal (toolkit) -->
+  <div id="tk-lead-modal" class="tk-modal-overlay" aria-hidden="true" aria-modal="true" role="dialog" aria-labelledby="tk-lead-modal-title">
+    <div class="tk-modal">
+      <div class="tk-modal-header">
+        <h2 id="tk-lead-modal-title">Get a Free Quote</h2>
+        <button type="button" class="tk-modal-close" data-tk-close-lead aria-label="Close modal">&times;</button>
+      </div>
+      <div class="tk-modal-body">
+        <form id="tk-lead-form">
+          <div class="tk-form-group">
+            <label for="tk-lead-name">Name <span class="required">*</span></label>
+            <input type="text" id="tk-lead-name" name="name" required autocomplete="name" />
+          </div>
+          <div class="tk-form-group">
+            <label for="tk-lead-phone">Phone <span class="required">*</span></label>
+            <input type="tel" id="tk-lead-phone" name="phone" required autocomplete="tel" placeholder="(555) 123-4567" />
+          </div>
+          <div class="tk-form-group">
+            <label for="tk-lead-service">Service needed <span class="required">*</span></label>
+            <select id="tk-lead-service" name="serviceNeeded" required>
+              <option value="">Loading…</option>
+            </select>
+          </div>
+          <div class="tk-form-group">
+            <label for="tk-lead-zip">City or ZIP <span class="required">*</span></label>
+            <input type="text" id="tk-lead-zip" name="zipOrCity" required placeholder="Dallas or 75201" />
+          </div>
+          <div class="tk-form-group">
+            <label for="tk-lead-date">Preferred date</label>
+            <input type="date" id="tk-lead-date" name="preferredDate" />
+          </div>
+          <div class="tk-form-group">
+            <label for="tk-lead-time">Preferred time</label>
+            <input type="time" id="tk-lead-time" name="preferredTime" />
+          </div>
+          <div class="tk-form-group">
+            <label for="tk-lead-notes">Notes</label>
+            <textarea id="tk-lead-notes" name="notes" rows="3" placeholder="Brief description of your project"></textarea>
+          </div>
+          <div class="tk-form-group tk-checkbox-wrap">
+            <input type="checkbox" id="tk-lead-sms" name="smsConsent" />
+            <label for="tk-lead-sms">
+              <span class="tk-consent-text">By checking this box, you agree to receive text messages from us. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
+            </label>
+          </div>
+          <div class="tk-submit-wrap">
+            <button type="submit" class="tk-btn-submit">Get Free Quote</button>
+          </div>
+          <div class="tk-message success" role="status"></div>
+          <div class="tk-message error" role="alert"></div>
+          <div class="tk-message not-configured" role="status"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="tk-fab-wrap" class="tk-fab-wrap" aria-hidden="true">
+    <a href="#" class="tk-fab" aria-label="Call us" title="Call">&#x260E;</a>
+  </div>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/toolkit.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
