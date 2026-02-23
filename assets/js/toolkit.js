@@ -152,7 +152,8 @@
 
     document.querySelectorAll('[data-tk-open-lead], .tk-btn-quote').forEach(function (el) {
       el.addEventListener('click', function (e) {
-        if (el.getAttribute('href') === '#contact' || el.getAttribute('href') === '#') {
+        var h = el.getAttribute('href') || '';
+        if (h === '#contact' || h === '#' || h.indexOf('#contact') > -1) {
           e.preventDefault();
           openLeadModal();
         }
@@ -177,7 +178,7 @@
       var pathname = window.location.pathname || '';
       var segments = pathname.split('/').filter(Boolean);
       if (segments.length && !pathname.endsWith('/')) segments.pop();
-      var depth = Math.max(0, segments.length);
+      var depth = Math.max(0, segments.length - 1);
       return depth ? Array(depth + 1).join('../') : '';
     } catch (e) { return ''; }
   }
@@ -185,15 +186,22 @@
   function loadServicesOptions(selectEl) {
     if (!selectEl) return;
     var base = getDataBase();
+    var fallback = [
+      { slug: 'website', title: 'Website' },
+      { slug: 'landing-page', title: 'Landing page' },
+      { slug: 'local-seo', title: 'Local SEO' }
+    ];
     fetch(base + 'data/services.json')
       .then(function (r) { return r.ok ? r.json() : []; })
       .catch(function () { return []; })
       .then(function (arr) {
+        var list = (arr && arr.length) ? arr : fallback;
+        selectEl.innerHTML = '';
         var opt = document.createElement('option');
         opt.value = '';
         opt.textContent = 'Select a service…';
         selectEl.appendChild(opt);
-        (arr || []).forEach(function (s) {
+        list.forEach(function (s) {
           var o = document.createElement('option');
           o.value = s.slug || s.title || '';
           o.textContent = s.title || s.slug || '';
@@ -219,22 +227,20 @@
     phone = phone.replace(/\D/g, '');
 
     var errors = [];
-    if (!name) errors.push('Name is required.');
-    if (!phone) errors.push('Phone is required.');
-    if (!validateUSPhone(phoneEl ? phoneEl.value : '')) errors.push('Please enter a valid US phone number.');
+    if (!name) errors.push('Please enter your name.');
+    if (!phone) errors.push('Please enter your phone number.');
+    if (!validateUSPhone(phoneEl ? phoneEl.value : '')) errors.push('Please enter a valid 10-digit US phone number.');
     if (serviceEl && !serviceEl.value.trim()) errors.push('Please select a service.');
-    if (zipEl && !zipEl.value.trim()) errors.push('City or ZIP is required.');
-    if (CONFIG.enableSmsConsent && smsEl && !smsEl.checked) errors.push('SMS consent is required.');
+    if (zipEl && !zipEl.value.trim()) errors.push('Please enter your city or ZIP code.');
+    if (CONFIG.enableSmsConsent && smsEl && !smsEl.checked) errors.push('Please check the box to agree to receive text messages.');
 
     form.querySelectorAll('.error').forEach(function (el) { el.classList.remove('error'); });
     if (errors.length) {
-      errors.forEach(function (msg) {
-        var errEl = form.querySelector('.tk-message.error');
-        if (errEl) {
-          errEl.textContent = msg;
-          errEl.classList.add('visible');
-        }
-      });
+      var errEl = form.querySelector('.tk-message.error');
+      if (errEl) {
+        errEl.textContent = errors[0];
+        errEl.classList.add('visible');
+      }
       return;
     }
 
@@ -284,7 +290,7 @@
 
     function showNotConfigured() {
       if (notConfigEl) {
-        notConfigEl.textContent = 'Form is not connected to a webhook. Add leadWebhookUrl in config.js for testing.';
+        notConfigEl.textContent = 'Not connected yet — paste your Make.com or Zapier webhook URL in config.js to receive leads here.';
         notConfigEl.classList.add('visible');
       }
       if (successEl) successEl.classList.remove('visible');

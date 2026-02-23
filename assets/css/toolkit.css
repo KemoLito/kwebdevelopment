@@ -1,7 +1,7 @@
 /* Retention + Local SEO Toolkit — mobile-first */
 
 :root {
-  --tk-header-h: 64px;
+  --tk-header-h: var(--header-h, 64px);
   --tk-modal-z: 1000;
   --tk-overlay-z: 999;
   --tk-fab-size: 56px;

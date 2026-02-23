@@ -1,18 +1,21 @@
 /**
  * RETENTION + LOCAL SEO TOOLKIT — CONFIG
- * ========================================
- * CHECKLIST (paste values per client):
- * 1) googleReviewUrl — Get from Google Business Profile: Profile → Share review form,
- *    or use: https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID
- * 2) leadWebhookUrl — Zapier/Make/GoHighLevel "Webhooks by Zapier" or GHL form webhook URL
- * 3) feedbackWebhookUrl — Same; for 1–3 star private feedback submissions
- * 4) discountWebhookUrl — For seasonal/referral opt-in on /discount.html
+ * ======================================
  *
- * CONNECTING:
- * - GoHighLevel: Form webhook → Pipeline → Create contact → Trigger SMS + Call task
- * - Missed-call text-back: Use tracking number (CallRail/Twilio) + automation on missed call
- *   (Website role: capture leads + consent; CRM/Twilio handles the actual text-back)
- * - Seasonal campaigns: Add contacts to "Past Customers" smart list; send campaign every 90 days
+ * CHECKLIST:
+ * 1) googleReviewUrl — Paste your Google review link here.
+ *    Get it: Google Business Profile → Share review form, or
+ *    https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID
+ *
+ * 2) leadWebhookUrl — Paste your Make.com or Zapier webhook URL here.
+ *    (Make: Create webhook module, copy URL. Zapier: Webhooks by Zapier → Catch Hook.)
+ *
+ * 3) feedbackWebhookUrl — Paste webhook URL for 1–3 star private feedback.
+ *
+ * 4) discountWebhookUrl — Paste webhook URL for seasonal/referral opt-in (discount.html).
+ *
+ * If a webhook URL is left empty, the form still works; a visible "Not connected yet"
+ * message is shown so you can test the UI. No broken behavior.
  */
 (function (global) {
   'use strict';
