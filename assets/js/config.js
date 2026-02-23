@@ -14,6 +14,13 @@
  *
  * 4) discountWebhookUrl — Paste webhook URL for seasonal/referral opt-in (discount.html).
  *
+ * 5) calendlyUrl — Your Calendly event type link (e.g. https://calendly.com/you/30min).
+ *    If empty, "Get Started" scrolls to the contact section.
+ *
+ * 6) stripeLinks — Stripe payment links for pay.html:
+ *    starterMonthly — e.g. https://buy.stripe.com/...
+ *    businessMonthly — e.g. https://buy.stripe.com/...
+ *
  * If a webhook URL is left empty, the form still works; a visible "Not connected yet"
  * message is shown so you can test the UI. No broken behavior.
  */
@@ -29,6 +36,8 @@
     leadWebhookUrl: '',
     feedbackWebhookUrl: '',
     discountWebhookUrl: '',
+    calendlyUrl: '',
+    stripeLinks: { starterMonthly: '', businessMonthly: '' },
     enableFloatingCallButton: true,
     enableLeadModal: true,
     enableSmsConsent: true,

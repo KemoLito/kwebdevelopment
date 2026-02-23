@@ -492,11 +492,41 @@
     });
   }
 
+  function openCalendlyPopup() {
+    var url = CONFIG.calendlyUrl && String(CONFIG.calendlyUrl).trim();
+    if (!url) return false;
+    if (typeof window.Calendly !== 'undefined') {
+      window.Calendly.initPopupWidget({ url: url });
+      return true;
+    }
+    var script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    script.onload = function () {
+      if (window.Calendly) window.Calendly.initPopupWidget({ url: url });
+    };
+    document.body.appendChild(script);
+    return true;
+  }
+
+  function initCalendly() {
+    document.querySelectorAll('[data-tk-calendly], .tk-btn-get-started').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        var url = CONFIG.calendlyUrl && String(CONFIG.calendlyUrl).trim();
+        if (url && openCalendlyPopup()) return;
+        var contact = document.getElementById('contact');
+        if (contact) contact.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  }
+
   function init() {
     initUtmCapture();
     initFloatingCallButton();
     initClickToCall();
     initTextUs();
+    initCalendly();
     initLeadModal();
     initLeadForm();
     initReviewFunnel();

@@ -137,6 +137,8 @@ h1 {
 }
 .hero p { margin: 0 0 var(--space); color: var(--color-text-muted); max-width: 52ch; }
 .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: var(--space); }
+.how-it-works-row { display: flex; flex-wrap: wrap; gap: 16px 24px; margin-top: var(--space); font-size: 0.9rem; color: var(--color-text-muted); }
+.how-it-works-row strong { color: var(--color-text); }
 .muted { color: var(--color-text-muted); font-size: 0.95rem; }
 .small { font-size: 0.85rem; color: var(--color-text-muted); }
 .link { text-decoration: underline; text-underline-offset: 2px; }
