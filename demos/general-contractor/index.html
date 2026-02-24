@@ -6,6 +6,7 @@
   <title>Demo: General Contractor | KWebDevelopment</title>
   <meta name="description" content="Sample client demo — general contractor website." />
   <link rel="stylesheet" href="../../style.css" />
+  <link rel="stylesheet" href="theme.css" />
 </head>
 <body>
 <header>
@@ -27,8 +28,10 @@
 </header>
 
 <main>
-  <div class="wrap hero">
-    <div class="grid hero-grid">
+  <!-- Hero image: add hero.jpg to assets/demos/contractor/ -->
+  <div class="wrap hero" style="position: relative;">
+    <div class="hero-bg-img" style="position: absolute; inset: 0; background: var(--color-surface) url('../../assets/demos/contractor/hero.jpg') center/cover no-repeat; opacity: 0.25;"></div>
+    <div class="grid hero-grid" style="position: relative;">
       <div>
         <div class="pill">Demo site</div>
         <h1>Quality remodeling &amp; construction.</h1>
@@ -67,10 +70,11 @@
     <div class="wrap">
       <h2>Recent work</h2>
       <p class="section-lead muted">Sample project gallery.</p>
-      <div class="grid cards top16">
-        <div class="card"><div class="portfolio-card"><div class="img-wrap">Project 1</div></div></div>
-        <div class="card"><div class="portfolio-card"><div class="img-wrap">Project 2</div></div></div>
-        <div class="card"><div class="portfolio-card"><div class="img-wrap">Project 3</div></div></div>
+      <!-- Add to assets/demos/contractor/: gallery1.jpg, gallery2.jpg, gallery3.jpg -->
+      <div class="grid cards top16 gallery-grid">
+        <div class="card"><div class="portfolio-card"><img src="../../assets/demos/contractor/gallery1.jpg" alt="Project 1" class="gallery-img" /></div></div>
+        <div class="card"><div class="portfolio-card"><img src="../../assets/demos/contractor/gallery2.jpg" alt="Project 2" class="gallery-img" /></div></div>
+        <div class="card"><div class="portfolio-card"><img src="../../assets/demos/contractor/gallery3.jpg" alt="Project 3" class="gallery-img" /></div></div>
       </div>
     </div>
   </section>
@@ -96,6 +100,10 @@
   </div>
 </footer>
 
+<div class="demo-sticky-cta">
+  <a class="btn" href="tel:+14694436874" data-kweb-phone>Call</a>
+  <a class="btn primary" href="../../quote.html">Get a Quote</a>
+</div>
 <script src="../../assets/js/config.js"></script>
 <script src="../../script.js"></script>
 </body>

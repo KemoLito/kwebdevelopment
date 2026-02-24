@@ -1,0 +1,36 @@
+/* Demo theme: General Contractor — font + small accent; base = black/white outline */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+body { --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; }
+:root {
+  --demo-accent: #f59e0b;
+}
+/* Keep outline-only buttons; accent only for link hover */
+.logo a:hover { color: var(--demo-accent); }
+.links a:hover { color: var(--demo-accent); border-color: rgba(245,158,11,0.4); }
+.demo-sticky-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+  padding: 12px 20px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  z-index: 20;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+}
+.demo-sticky-cta .btn,
+.demo-sticky-cta .btn.primary {
+  background: var(--color-bg);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+.demo-sticky-cta .btn:hover,
+.demo-sticky-cta .btn.primary:hover {
+  border-color: var(--color-border-hover);
+  background: rgba(255,255,255,0.06);
+}
+main { padding-bottom: 80px; }

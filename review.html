@@ -8,25 +8,41 @@
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="assets/css/toolkit.css" />
+  <style>
+    .review-stars { display: flex; gap: 8px; justify-content: center; margin: 24px 0; flex-wrap: wrap; }
+    .review-stars button { width: 48px; height: 48px; border: 1px solid var(--color-border); background: var(--color-bg); color: var(--color-text-muted); border-radius: 50%; font-size: 20px; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+    .review-stars button:hover { border-color: var(--color-border-hover); background: rgba(255,255,255,0.06); color: var(--color-text); }
+    .review-stars button.selected { border-color: var(--color-border-hover); background: rgba(255,255,255,0.12); color: var(--color-text); }
+    .review-stars button:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+    .review-step2 { display: none; margin-top: 24px; }
+    .review-step2.visible { display: block; }
+    .review-google-btn { display: inline-block; padding: 16px 24px; background: var(--color-bg); color: var(--color-text); border: 1px solid var(--color-border); border-radius: var(--radius); font-weight: 700; text-decoration: none; margin: 16px 0; transition: border-color 0.2s, background 0.2s; }
+    .review-google-btn:hover { border-color: var(--color-border-hover); background: rgba(255,255,255,0.06); }
+    .review-google-btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+    .review-feedback-form .form-group { margin-bottom: 16px; }
+    .review-feedback-form label { display: block; margin-bottom: 6px; font-weight: 600; }
+    .review-feedback-form textarea, .review-feedback-form input { width: 100%; padding: 10px 12px; border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-bg); color: var(--color-text); font-size: 16px; }
+    .review-feedback-form textarea:focus, .review-feedback-form input:focus { outline: none; border-color: var(--color-border-hover); box-shadow: var(--focus-ring); }
+    .review-thanks { display: none; }
+    .review-thanks.visible { display: block; margin-top: 16px; padding: 16px; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius); }
+  </style>
 </head>
 <body>
 <header>
   <div class="wrap">
     <nav>
       <div class="logo"><a href="index.html">KWebDevelopment</a></div>
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false">Menu</button>
       <div class="links">
         <a href="index.html#services">Services</a>
-        <a href="index.html#process">Process</a>
         <a href="index.html#pricing">Pricing</a>
         <a href="index.html#contact">Contact</a>
         <a href="review.html">Review</a>
-        <a href="discount.html">Offer</a>
-        <a href="privacy.html">Privacy</a>
+        <a href="quote.html">Get a Quote</a>
       </div>
-      <div class="nav-cta tk-nav-cta">
-        <a class="btn tk-btn-call" href="#">Call</a>
-        <a class="btn primary tk-btn-quote" href="#" data-tk-open-lead>Get Free Quote</a>
+      <div class="nav-cta">
+        <a class="btn" href="tel:+14694436874" data-kweb-phone>Call</a>
+        <a class="btn primary" href="quote.html">Get a Quote</a>
       </div>
     </nav>
   </div>
@@ -35,53 +51,46 @@
 <main>
   <div class="wrap" style="padding: 48px 20px; max-width: 560px; margin: 0 auto;">
     <h1 style="margin: 0 0 8px;">How was your experience?</h1>
-    <p class="muted">Your feedback helps us improve and helps others find us.</p>
+    <p class="muted">Your feedback helps us improve. Choose 1–5 stars below.</p>
 
-    <div class="tk-review-request-section">
-      <strong>Review request link</strong><br />
-      You can text this page to customers after a job: send them this link so they can leave a quick star rating. Happy customers (4–5 stars) are sent to Google; others can submit private feedback so you can follow up.
+    <div class="review-request-note" style="margin-top: 24px; padding: 16px; background: var(--color-surface); border-radius: var(--radius); font-size: 0.9rem; color: var(--color-text-muted);">
+      <strong style="color: var(--color-text);">Review request link</strong><br />
+      You can text this page to customers after a job. Happy customers (4–5 stars) are sent to Google; others can submit private feedback so you can follow up.
     </div>
 
-    <div id="tk-review-funnel">
-      <p><strong>Rate your experience (1–5 stars):</strong></p>
-      <div class="tk-review-stars" role="group" aria-label="Star rating">
-        <button type="button" aria-label="1 star">&#9733;</button>
-        <button type="button" aria-label="2 stars">&#9733;</button>
-        <button type="button" aria-label="3 stars">&#9733;</button>
-        <button type="button" aria-label="4 stars">&#9733;</button>
-        <button type="button" aria-label="5 stars">&#9733;</button>
+    <div id="review-funnel">
+      <p style="margin-top: 24px 0 12px;"><strong>Rate your experience (1–5 stars):</strong></p>
+      <div class="review-stars" role="group" aria-label="Star rating">
+        <button type="button" aria-label="1 star" data-rating="1">&#9733;</button>
+        <button type="button" aria-label="2 stars" data-rating="2">&#9733;</button>
+        <button type="button" aria-label="3 stars" data-rating="3">&#9733;</button>
+        <button type="button" aria-label="4 stars" data-rating="4">&#9733;</button>
+        <button type="button" aria-label="5 stars" data-rating="5">&#9733;</button>
       </div>
-      <input type="hidden" name="rating" value="" />
 
-      <div class="tk-review-step2">
-        <div class="tk-review-google-link" style="display: none; text-align: center;">
+      <div id="review-step2" class="review-step2">
+        <div id="review-google-block" style="display: none; text-align: center;">
           <p>Thank you! Please share your experience on Google:</p>
-          <a href="#" class="tk-review-google-btn" target="_blank" rel="noopener">Leave a Google Review</a>
+          <a id="review-google-link" href="#" class="review-google-btn" target="_blank" rel="noopener">Leave a Google Review</a>
         </div>
-        <div class="tk-review-feedback" style="display: none;">
+        <div id="review-feedback-block" style="display: none;">
           <p>We’re sorry it wasn’t perfect. Tell us what went wrong so we can make it right.</p>
-          <form id="tk-feedback-form">
-            <div class="tk-form-group">
-              <label for="fb-message">Your feedback <span class="required">*</span></label>
-              <textarea id="fb-message" name="message" rows="4" required></textarea>
+          <form id="review-feedback-form" class="review-feedback-form">
+            <div class="form-group">
+              <label for="fb-msg">Your feedback <span class="required">*</span></label>
+              <textarea id="fb-msg" name="message" rows="4" required></textarea>
             </div>
-            <div class="tk-form-group">
+            <div class="form-group">
               <label for="fb-name">Name (optional)</label>
               <input type="text" id="fb-name" name="name" autocomplete="name" />
             </div>
-            <div class="tk-form-group">
+            <div class="form-group">
               <label for="fb-email">Email (optional)</label>
               <input type="email" id="fb-email" name="email" autocomplete="email" />
             </div>
-            <div class="tk-form-group">
-              <label for="fb-phone">Phone (optional)</label>
-              <input type="tel" id="fb-phone" name="phoneOptional" autocomplete="tel" />
-            </div>
-            <button type="submit" class="tk-btn-submit">Submit feedback</button>
+            <button type="submit" class="btn primary">Submit feedback</button>
           </form>
-          <div class="tk-message success tk-feedback-thanks" style="display: none;">
-            Thank you — we’ll make this right.
-          </div>
+          <div id="review-feedback-thanks" class="review-thanks">Thank you — we’ll make this right.</div>
         </div>
       </div>
     </div>
@@ -91,43 +100,79 @@
 <footer>
   <div class="wrap">
     <a href="privacy.html">Privacy</a>
-    <a href="review.html">Review</a>
-    <a href="discount.html">Offer</a>
-    <a href="#" class="btn primary tk-btn-quote" data-tk-open-lead>Get Free Quote</a>
+    <a href="index.html">Home</a>
+    <a href="quote.html" class="btn primary">Get a Quote</a>
     <span class="small">Built by KWebDevelopment · TX / DFW</span>
   </div>
 </footer>
 
-<div id="tk-lead-modal" class="tk-modal-overlay" aria-hidden="true" aria-modal="true" role="dialog" aria-labelledby="tk-lead-modal-title">
-  <div class="tk-modal">
-    <div class="tk-modal-header">
-      <h2 id="tk-lead-modal-title">Get a Free Quote</h2>
-      <button type="button" class="tk-modal-close" data-tk-close-lead aria-label="Close modal">&times;</button>
-    </div>
-    <div class="tk-modal-body">
-      <form id="tk-lead-form">
-        <div class="tk-form-group"><label for="tk-lead-name">Name <span class="required">*</span></label><input type="text" id="tk-lead-name" name="name" required autocomplete="name" /></div>
-        <div class="tk-form-group"><label for="tk-lead-phone">Phone <span class="required">*</span></label><input type="tel" id="tk-lead-phone" name="phone" required autocomplete="tel" placeholder="(555) 123-4567" /></div>
-        <div class="tk-form-group"><label for="tk-lead-service">Service needed <span class="required">*</span></label><select id="tk-lead-service" name="serviceNeeded" required><option value="">Loading…</option></select></div>
-        <div class="tk-form-group"><label for="tk-lead-zip">City or ZIP <span class="required">*</span></label><input type="text" id="tk-lead-zip" name="zipOrCity" required placeholder="Dallas or 75201" /></div>
-        <div class="tk-form-group"><label for="tk-lead-date">Preferred date</label><input type="date" id="tk-lead-date" name="preferredDate" /></div>
-        <div class="tk-form-group"><label for="tk-lead-time">Preferred time</label><input type="time" id="tk-lead-time" name="preferredTime" /></div>
-        <div class="tk-form-group"><label for="tk-lead-notes">Notes</label><textarea id="tk-lead-notes" name="notes" rows="3" placeholder="Brief description"></textarea></div>
-        <div class="tk-form-group tk-checkbox-wrap"><input type="checkbox" id="tk-lead-sms" name="smsConsent" /><label for="tk-lead-sms"><span class="tk-consent-text">By checking this box, you agree to receive text messages. Msg &amp; data rates may apply. Reply STOP to opt out.</span></label></div>
-        <div class="tk-submit-wrap"><button type="submit" class="tk-btn-submit">Get Free Quote</button></div>
-        <div class="tk-message success" role="status"></div>
-        <div class="tk-message error" role="alert"></div>
-        <div class="tk-message not-configured" role="status"></div>
-      </form>
-    </div>
-  </div>
-</div>
-
-<div id="tk-fab-wrap" class="tk-fab-wrap" aria-hidden="true">
-  <a href="#" class="tk-fab" aria-label="Call us">&#x260E;</a>
-</div>
-
 <script src="assets/js/config.js"></script>
-<script src="assets/js/toolkit.js"></script>
+<script src="script.js"></script>
+<script>
+(function () {
+  var config = window.KWEB_CONFIG || {};
+  var stars = document.querySelectorAll('.review-stars button');
+  var step2 = document.getElementById('review-step2');
+  var googleBlock = document.getElementById('review-google-block');
+  var googleLink = document.getElementById('review-google-link');
+  var feedbackBlock = document.getElementById('review-feedback-block');
+  var feedbackForm = document.getElementById('review-feedback-form');
+  var feedbackThanks = document.getElementById('review-feedback-thanks');
+  var selectedRating = 0;
+
+  function getStoredUtms() {
+    try {
+      var raw = localStorage.getItem('kweb_utms');
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) { return {}; }
+  }
+
+  stars.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      selectedRating = parseInt(btn.getAttribute('data-rating'), 10);
+      stars.forEach(function (b) { b.classList.toggle('selected', parseInt(b.getAttribute('data-rating'), 10) <= selectedRating); });
+      step2.classList.add('visible');
+      if (selectedRating >= 4) {
+        googleBlock.style.display = 'block';
+        feedbackBlock.style.display = 'none';
+        var url = (config.googleReviewsUrl || '').trim();
+        googleLink.href = url || '#';
+      } else {
+        googleBlock.style.display = 'none';
+        feedbackBlock.style.display = 'block';
+      }
+    });
+  });
+
+  if (feedbackForm) {
+    feedbackForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var msg = document.getElementById('fb-msg');
+      if (!msg || !msg.value.trim()) return;
+      var payload = {
+        rating: selectedRating,
+        message: msg.value.trim(),
+        name: (document.getElementById('fb-name') || {}).value || '',
+        email: (document.getElementById('fb-email') || {}).value || '',
+        timestamp: new Date().toISOString(),
+        pageUrl: window.location.href,
+        utms: getStoredUtms()
+      };
+      var webhook = (config.feedbackWebhookUrl || '').trim();
+      if (webhook && webhook !== 'PASTE_FEEDBACK_WEBHOOK_HERE') {
+        fetch(webhook, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+          .then(function () { showThanks(); })
+          .catch(function () { showThanks(); });
+      } else {
+        showThanks();
+      }
+      function showThanks() {
+        feedbackForm.style.display = 'none';
+        feedbackThanks.classList.add('visible');
+      }
+    });
+  }
+})();
+</script>
 </body>
 </html>

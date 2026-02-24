@@ -43,6 +43,11 @@
   var gmailHref = email ? 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(email) : '#';
   document.querySelectorAll('[data-kweb-phone]').forEach(function (el) { el.href = telHref; });
   document.querySelectorAll('[data-kweb-email]').forEach(function (el) { el.href = gmailHref; });
+  var googleReviewsUrl = (config.googleReviewsUrl || '').trim();
+  document.querySelectorAll('[data-kweb-google-reviews]').forEach(function (el) {
+    el.href = googleReviewsUrl || '#';
+    if (!googleReviewsUrl) el.style.visibility = 'hidden';
+  });
 
   // Quote form (quote.html only)
   var quoteForm = document.getElementById('quote-form');
@@ -141,7 +146,7 @@
       })
         .then(function (res) {
           if (res.ok || res.status === 204) {
-            window.location.href = config.successRedirect || 'thanks.html';
+            window.location.href = config.successRedirect || '/thanks.html';
             return;
           }
           throw new Error('Request failed');
