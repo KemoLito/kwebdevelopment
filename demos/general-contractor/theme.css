@@ -35,6 +35,9 @@ a:hover { text-decoration: underline; }
   z-index: 100;
   box-shadow: 0 2px 12px rgba(0,0,0,0.2);
 }
+.site-header .header-inner {
+  position: relative;
+}
 .header-inner {
   max-width: 1000px;
   margin: 0 auto;
@@ -62,6 +65,14 @@ a:hover { text-decoration: underline; }
   font-weight: 600;
 }
 .main-nav a:hover { color: #f5ebe0; }
+.main-nav .btn-cta {
+  padding: 10px 20px;
+  font-size: 0.9rem;
+}
+.main-nav .btn-outline { color: #e8d5c4; border-color: #e8d5c4; }
+.main-nav .btn-outline:hover { background: rgba(255,255,255,0.1); color: #f5ebe0; }
+.main-nav .btn-primary { background: #c4956a; border-color: #c4956a; color: #2c1810; }
+.main-nav .btn-primary:hover { background: #d4a574; border-color: #d4a574; color: #2c1810; }
 .nav-toggle {
   display: none;
   background: transparent;
@@ -75,7 +86,18 @@ a:hover { text-decoration: underline; }
 @media (max-width: 768px) {
   .nav-toggle { display: block; }
   .main-nav { display: none; }
-  .main-nav.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: #2c1810; padding: 20px; }
+  .main-nav.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #2c1810;
+    padding: 20px;
+    gap: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
 }
 
 /* Buttons */
