@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  var config = window.KWEB_CONFIG || {};
+  var config = window.CONFIG || window.KWEB_CONFIG || {};
   var UTMS_KEY = 'kweb_utms';
 
   // Capture UTMs from landing URL into localStorage

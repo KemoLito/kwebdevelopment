@@ -18,16 +18,14 @@
       <div class="logo"><a href="index.html">KWebDevelopment</a></div>
       <div class="links">
         <a href="index.html#services">Services</a>
-        <a href="index.html#process">Process</a>
-        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#examples">Examples</a>
         <a href="index.html#contact">Contact</a>
         <a href="review.html">Review</a>
-        <a href="discount.html">Offer</a>
         <a href="privacy.html">Privacy</a>
       </div>
-      <div class="nav-cta tk-nav-cta">
-        <a class="btn tk-btn-call" href="#">Call</a>
-        <a class="btn primary tk-btn-quote" href="#" data-tk-open-lead>Get Free Quote</a>
+      <div class="nav-cta">
+        <a class="btn" href="tel:+14694436874" data-kweb-phone>Call</a>
+        <a class="btn primary" href="quote.html">Get a Quote</a>
       </div>
     </nav>
   </div>
@@ -49,7 +47,7 @@
       <ul>
         <li>Confirmations and appointment reminders</li>
         <li>Follow-up messages after a quote or project</li>
-        <li>Occasional offers or seasonal campaigns (e.g. referral discounts)</li>
+        <li>Occasional follow-up or updates (e.g. by email)</li>
       </ul>
       <p><strong>Message and data rates may apply.</strong> Frequency varies. You can opt out at any time by replying <strong>STOP</strong> to any message. Reply <strong>HELP</strong> for support.</p>
       <p>We do not sell your phone number to third parties for marketing.</p>
@@ -71,42 +69,13 @@
   <div class="wrap">
     <a href="privacy.html">Privacy</a>
     <a href="review.html">Review</a>
-    <a href="discount.html">Offer</a>
-    <a href="#" class="btn primary tk-btn-quote" data-tk-open-lead>Get Free Quote</a>
+    <a href="quote.html" class="btn primary">Get a Quote</a>
     <span class="small">Built by KWebDevelopment · TX / DFW</span>
   </div>
 </footer>
 
-<div id="tk-lead-modal" class="tk-modal-overlay" aria-hidden="true" aria-modal="true" role="dialog" aria-labelledby="tk-lead-modal-title">
-  <div class="tk-modal">
-    <div class="tk-modal-header">
-      <h2 id="tk-lead-modal-title">Get a Free Quote</h2>
-      <button type="button" class="tk-modal-close" data-tk-close-lead aria-label="Close modal">&times;</button>
-    </div>
-    <div class="tk-modal-body">
-      <form id="tk-lead-form">
-        <div class="tk-form-group"><label for="tk-lead-name">Name <span class="required">*</span></label><input type="text" id="tk-lead-name" name="name" required autocomplete="name" /></div>
-        <div class="tk-form-group"><label for="tk-lead-phone">Phone <span class="required">*</span></label><input type="tel" id="tk-lead-phone" name="phone" required autocomplete="tel" placeholder="(555) 123-4567" /></div>
-        <div class="tk-form-group"><label for="tk-lead-service">Service needed <span class="required">*</span></label><select id="tk-lead-service" name="serviceNeeded" required><option value="">Loading…</option></select></div>
-        <div class="tk-form-group"><label for="tk-lead-zip">City or ZIP <span class="required">*</span></label><input type="text" id="tk-lead-zip" name="zipOrCity" required placeholder="Dallas or 75201" /></div>
-        <div class="tk-form-group"><label for="tk-lead-date">Preferred date</label><input type="date" id="tk-lead-date" name="preferredDate" /></div>
-        <div class="tk-form-group"><label for="tk-lead-time">Preferred time</label><input type="time" id="tk-lead-time" name="preferredTime" /></div>
-        <div class="tk-form-group"><label for="tk-lead-notes">Notes</label><textarea id="tk-lead-notes" name="notes" rows="3" placeholder="Brief description"></textarea></div>
-        <div class="tk-form-group tk-checkbox-wrap"><input type="checkbox" id="tk-lead-sms" name="smsConsent" /><label for="tk-lead-sms"><span class="tk-consent-text">By checking this box, you agree to receive text messages. Msg &amp; data rates may apply. Reply STOP to opt out.</span></label></div>
-        <div class="tk-submit-wrap"><button type="submit" class="tk-btn-submit">Get Free Quote</button></div>
-        <div class="tk-message success" role="status"></div>
-        <div class="tk-message error" role="alert"></div>
-        <div class="tk-message not-configured" role="status"></div>
-      </form>
-    </div>
-  </div>
-</div>
-
-<div id="tk-fab-wrap" class="tk-fab-wrap" aria-hidden="true">
-  <a href="#" class="tk-fab" aria-label="Call us">&#x260E;</a>
-</div>
-
 <script src="assets/js/config.js"></script>
+<script src="script.js"></script>
 <script src="assets/js/toolkit.js"></script>
 <script>
   document.getElementById('privacy-date').textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });

@@ -9,7 +9,7 @@
 (function () {
   'use strict';
 
-  var CONFIG = typeof window !== 'undefined' && window.CONFIG ? window.CONFIG : {};
+  var CONFIG = typeof window !== 'undefined' && (window.CONFIG || window.KWEB_CONFIG) ? (window.CONFIG || window.KWEB_CONFIG) : {};
   var UTMS_KEY = 'tk_utms';
 
   function getPhone() {
