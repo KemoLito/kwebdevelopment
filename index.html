@@ -11,8 +11,6 @@
   <link rel="icon" href="favicon.ico" sizes="any" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="assets/css/toolkit.css" />
-  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
 </head>
 <body>
 <header>
@@ -20,7 +18,9 @@
     <nav>
       <div class="logo"><a href="index.html">KWebDevelopment</a></div>
 
+      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false">Menu</button>
       <div class="links">
+        <a href="index.html#examples">Examples</a>
         <a href="index.html#services">Services</a>
         <a href="index.html#process">Process</a>
         <a href="index.html#pricing">Pricing</a>
@@ -30,9 +30,9 @@
         <a href="privacy.html">Privacy</a>
       </div>
 
-      <div class="nav-cta tk-nav-cta">
-        <a class="btn tk-btn-call" href="#" data-tk-call>Call</a>
-        <a class="btn primary tk-btn-get-started" href="index.html#contact" data-tk-calendly>Get Started</a>
+      <div class="nav-cta">
+        <a class="btn" href="tel:+14694436874" data-kweb-phone>Call</a>
+        <a class="btn primary" href="quote.html">Get a Quote</a>
       </div>
     </nav>
   </div>
@@ -49,15 +49,15 @@
           and SEO basics so you can look legit and book more work.
         </p>
         <div class="cta-row">
-          <a class="btn primary tk-btn-get-started" href="index.html#contact" data-tk-calendly>Get Started</a>
-          <a class="btn tk-btn-call" href="#">Call</a>
+          <a class="btn primary" href="quote.html">Get a Quote</a>
+          <a class="btn" href="tel:+14694436874" data-kweb-phone>Call</a>
         </div>
         <div class="how-it-works-row">
           <span><strong>1.</strong> Tell us what you need</span>
           <span><strong>2.</strong> Book a quick call</span>
           <span><strong>3.</strong> Pick a plan + start</span>
         </div>
-        <p class="muted top12">Email: kwebdevelopmenttx@gmail.com · <a href="privacy.html" class="link">Privacy</a></p>
+        <p class="muted top12">Email: <a href="#" class="link" data-kweb-email>kwebdevelopmenttx@gmail.com</a> · <a href="privacy.html" class="link">Privacy</a></p>
       </div>
       <div class="card">
         <strong>Quick Wins Included</strong>
@@ -71,6 +71,39 @@
       </div>
     </div>
   </div>
+
+  <section id="what-we-do" class="scroll-margin what-we-do">
+    <div class="wrap">
+      <h2>What we do</h2>
+      <div class="card card-copy">
+        <p class="what-we-do-text">I design and manage websites for small businesses to help them build trust, retain customers, and increase calls and bookings. Customers find me through my website, referrals, and direct outreach, and I charge a monthly plan for hosting, maintenance, and updates.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="examples" class="scroll-margin">
+    <div class="wrap">
+      <h2>Examples</h2>
+      <p class="section-lead muted">Click a demo to see a sample client site. Each links to the same quote form for lead capture.</p>
+      <div class="examples-grid">
+        <a href="demos/general-contractor/index.html" class="demo-card">
+          <div class="demo-title">General Contractor</div>
+          <p class="demo-desc">Demo site for a construction / remodeling business.</p>
+          <span class="demo-arrow">View demo →</span>
+        </a>
+        <a href="demos/plumber/index.html" class="demo-card">
+          <div class="demo-title">Plumber</div>
+          <p class="demo-desc">Demo site for a plumbing and drain services company.</p>
+          <span class="demo-arrow">View demo →</span>
+        </a>
+        <a href="demos/car-detailer/index.html" class="demo-card">
+          <div class="demo-title">Car Detailer</div>
+          <p class="demo-desc">Demo site for auto detailing and car care.</p>
+          <span class="demo-arrow">View demo →</span>
+        </a>
+      </div>
+    </div>
+  </section>
 
   <section id="services" class="scroll-margin">
     <div class="wrap">
@@ -239,13 +272,13 @@
           <strong>Starter</strong>
           <div class="price">$299+</div>
           <p class="muted">1-page site, contact form, mobile-first, SEO basics.</p>
-          <a class="btn primary tk-btn-quote" href="index.html#contact" data-tk-open-lead>Get Free Quote</a>
+          <a class="btn primary" href="quote.html">Get a Quote</a>
         </div>
         <div class="pricing-card">
           <strong>Business</strong>
           <div class="price">$599+</div>
           <p class="muted">More sections/pages, FAQs, stronger SEO structure.</p>
-          <a class="btn primary tk-btn-quote" href="index.html#contact" data-tk-open-lead>Get Free Quote</a>
+          <a class="btn primary" href="quote.html">Get a Quote</a>
         </div>
       </div>
       <p class="small top10">You can change prices later — this is just a placeholder.</p>
@@ -259,12 +292,12 @@
       <div class="grid two top16">
         <div class="card">
           <strong>Call / Text</strong>
-          <p class="muted top8"><a class="link tk-btn-call" href="#">Call</a> · <a href="#" class="link tk-text-us">Text us</a></p>
+          <p class="muted top8"><a href="tel:+14694436874" class="link" data-kweb-phone>(469) 443-6874</a></p>
           <p class="muted">Best for quick quotes.</p>
         </div>
         <div class="card">
           <strong>Email</strong>
-          <p class="muted top8">kwebdevelopmenttx@gmail.com</p>
+          <p class="muted top8"><a href="#" class="link" data-kweb-email>kwebdevelopmenttx@gmail.com</a></p>
           <p class="muted">Include: business name, city, services, and goal.</p>
         </div>
       </div>
@@ -275,7 +308,7 @@
           My budget is ___ and I’d like it live by ___.”
         </p>
       </div>
-      <p class="top16"><a href="index.html#contact" class="btn primary tk-btn-quote" data-tk-open-lead>Get Free Quote</a></p>
+      <p class="top16"><a href="quote.html" class="btn primary">Get a Quote</a></p>
       <p class="small top14">© <span id="yr"></span> KWebDevelopment · Texas</p>
     </div>
   </section>
@@ -286,73 +319,12 @@
     <a href="privacy.html">Privacy</a>
     <a href="review.html">Review</a>
     <a href="discount.html">Offer</a>
-    <a href="#" class="btn primary tk-btn-quote" data-tk-open-lead>Get Free Quote</a>
+    <a href="quote.html" class="btn primary">Get a Quote</a>
     <span class="small">Built by KWebDevelopment · TX / DFW</span>
   </div>
 </footer>
 
-<div id="tk-lead-modal" class="tk-modal-overlay" aria-hidden="true" aria-modal="true" role="dialog" aria-labelledby="tk-lead-modal-title">
-  <div class="tk-modal">
-    <div class="tk-modal-header">
-      <h2 id="tk-lead-modal-title">Get a Free Quote</h2>
-      <button type="button" class="tk-modal-close" data-tk-close-lead aria-label="Close modal">&times;</button>
-    </div>
-    <div class="tk-modal-body">
-      <form id="tk-lead-form">
-        <div class="tk-form-group">
-          <label for="tk-lead-name">Name <span class="required">*</span></label>
-          <input type="text" id="tk-lead-name" name="name" required autocomplete="name" />
-        </div>
-        <div class="tk-form-group">
-          <label for="tk-lead-phone">Phone <span class="required">*</span></label>
-          <input type="tel" id="tk-lead-phone" name="phone" required autocomplete="tel" placeholder="(555) 123-4567" />
-        </div>
-        <div class="tk-form-group">
-          <label for="tk-lead-service">Service needed <span class="required">*</span></label>
-          <select id="tk-lead-service" name="serviceNeeded" required>
-            <option value="">Loading…</option>
-          </select>
-        </div>
-        <div class="tk-form-group">
-          <label for="tk-lead-zip">City or ZIP <span class="required">*</span></label>
-          <input type="text" id="tk-lead-zip" name="zipOrCity" required placeholder="Dallas or 75201" />
-        </div>
-        <div class="tk-form-group">
-          <label for="tk-lead-date">Preferred date</label>
-          <input type="date" id="tk-lead-date" name="preferredDate" />
-        </div>
-        <div class="tk-form-group">
-          <label for="tk-lead-time">Preferred time</label>
-          <input type="time" id="tk-lead-time" name="preferredTime" />
-        </div>
-        <div class="tk-form-group">
-          <label for="tk-lead-notes">Notes</label>
-          <textarea id="tk-lead-notes" name="notes" rows="3" placeholder="Brief description of your project"></textarea>
-        </div>
-        <div class="tk-form-group tk-checkbox-wrap">
-          <input type="checkbox" id="tk-lead-sms" name="smsConsent" />
-          <label for="tk-lead-sms">
-            <span class="tk-consent-text">By checking this box, you agree to receive text messages from us. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
-          </label>
-        </div>
-        <div class="tk-submit-wrap">
-          <button type="submit" class="tk-btn-submit">Get Free Quote</button>
-        </div>
-        <div class="tk-message success" role="status"></div>
-        <div class="tk-message error" role="alert"></div>
-        <div class="tk-message not-configured" role="status"></div>
-      </form>
-    </div>
-  </div>
-</div>
-
-<div id="tk-fab-wrap" class="tk-fab-wrap" aria-hidden="true">
-  <a href="#" class="tk-fab" aria-label="Call us" title="Call">&#x260E;</a>
-</div>
-
-<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 <script src="assets/js/config.js"></script>
-<script src="assets/js/toolkit.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

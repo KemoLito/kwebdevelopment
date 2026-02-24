@@ -1,58 +1,17 @@
 /**
- * RETENTION + LOCAL SEO TOOLKIT — CONFIG
- * ======================================
+ * KWebDevelopment — global config
  *
- * CHECKLIST:
- * 1) googleReviewUrl — Paste your Google review link here.
- *    Get it: Google Business Profile → Share review form, or
- *    https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID
- *
- * 2) leadWebhookUrl — Paste your Make.com or Zapier webhook URL here.
- *    (Make: Create webhook module, copy URL. Zapier: Webhooks by Zapier → Catch Hook.)
- *
- * 3) feedbackWebhookUrl — Paste webhook URL for 1–3 star private feedback.
- *
- * 4) discountWebhookUrl — Paste webhook URL for seasonal/referral opt-in (discount.html).
- *
- * 5) calendlyUrl — Your Calendly event type link (e.g. https://calendly.com/you/30min).
- *    If empty, "Get Started" scrolls to the contact section.
- *
- * 6) stripeLinks — Stripe payment links for pay.html:
- *    starterMonthly — e.g. https://buy.stripe.com/...
- *    businessMonthly — e.g. https://buy.stripe.com/...
- *
- * If a webhook URL is left empty, the form still works; a visible "Not connected yet"
- * message is shown so you can test the UI. No broken behavior.
+ * 1) Webhook: leadWebhookUrl — your Make.com webhook for lead capture.
+ * 2) Work phone + company email: Update phoneE164 and companyEmail below.
+ * 3) Test locally: python3 -m http.server 8000 → http://localhost:8000
+ * 4) Deploy (Netlify): Connect repo, build command empty, publish directory: .
  */
-(function (global) {
-  'use strict';
+window.KWEB_CONFIG = {
+  leadWebhookUrl: "https://hook.us2.make.com/fr29y3zbnwgmb617lrou7s8jiz8np2qd",
+  successRedirect: "thanks.html",
 
-  var CONFIG = {
-    businessName: 'KWebDevelopment',
-    primaryPhone: '14694436874',
-    trackingPhoneOptional: '',
-    businessEmail: 'kwebdevelopmenttx@gmail.com',
-    googleReviewUrl: '',
-    leadWebhookUrl: '',
-    feedbackWebhookUrl: '',
-    discountWebhookUrl: '',
-    calendlyUrl: '',
-    stripeLinks: { starterMonthly: '', businessMonthly: '' },
-    enableFloatingCallButton: true,
-    enableLeadModal: true,
-    enableSmsConsent: true,
-    enableUtmCapture: true,
-    timezone: 'America/Chicago',
-    businessHours: { start: '08:00', end: '18:00' },
-    serviceDaysAllowed: [1, 2, 3, 4, 5, 6],
-    expectedCallbackWindowText: 'within the hour',
-    brandColors: { primary: '#111', secondary: '#333' },
-    logoPath: ''
-  };
-
-  if (typeof module !== 'undefined' && module.exports) {
-    module.exports = CONFIG;
-  } else {
-    global.CONFIG = CONFIG;
-  }
-})(typeof window !== 'undefined' ? window : this);
+  // Work phone (E.164, no spaces/dashes in value for tel:)
+  phoneE164: "+14694436874",
+  // Company email (for Gmail compose links)
+  companyEmail: "kwebdevelopmenttx@gmail.com"
+};
