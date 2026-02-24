@@ -3,107 +3,123 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Demo: Plumber | KWebDevelopment</title>
-  <meta name="description" content="Sample client demo — plumbing services website." />
-  <link rel="stylesheet" href="../../style.css" />
+  <title>FlowRight Plumbing | 24/7 Plumbing &amp; Drain Services</title>
+  <meta name="description" content="Residential and commercial plumbing. Repairs, installations, drain cleaning. 24/7 emergency service. Dallas–Fort Worth." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="theme.css" />
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <nav>
-      <div class="logo"><a href="../../index.html">Demo: Plumber</a></div>
-      <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false">Menu</button>
-      <div class="links">
-        <a href="#services">Services</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <div class="nav-cta">
-        <a class="btn" href="tel:+14694436874" data-kweb-phone>Call</a>
-        <a class="btn primary" href="../../quote.html">Get a Quote</a>
-      </div>
-    </nav>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="../../index.html" class="logo">FlowRight Plumbing</a>
+    <button type="button" class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <ul class="main-nav links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="tel:+14694436874" class="nav-btn" data-kweb-phone>Call</a></li>
+      <li><a href="../../quote.html" class="nav-btn nav-btn-primary">Get a Quote</a></li>
+    </ul>
   </div>
 </header>
 
 <main>
-  <!-- Hero image: add hero.jpg to assets/demos/plumber/ -->
-  <div class="wrap hero" style="position: relative;">
-    <div class="hero-bg-img" style="position: absolute; inset: 0; background: var(--color-surface) url('../../assets/demos/plumber/hero.jpg') center/cover no-repeat; opacity: 0.25;"></div>
-    <div class="grid hero-grid" style="position: relative;">
-      <div>
-        <div class="pill">Demo site</div>
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="hero-badge">24/7 Emergency Service</span>
         <h1>Plumbing &amp; drain services you can trust.</h1>
-        <p class="muted">Residential and commercial. Repairs, installations, and 24/7 emergency service.</p>
-        <div class="cta-row">
-          <a class="btn primary" href="../../quote.html">Get a Quote</a>
-          <a class="btn" href="tel:+14694436874" data-kweb-phone>Call</a>
+        <p>Residential and commercial. Repairs, installations, and emergency callouts. Licensed and insured.</p>
+        <div class="hero-cta">
+          <a href="tel:+14694436874" class="btn btn-primary" data-kweb-phone>Call Now</a>
+          <a href="../../quote.html" class="btn btn-secondary">Get a Quote</a>
         </div>
       </div>
-    </div>
-  </div>
-
-  <section id="services" class="scroll-margin">
-    <div class="wrap">
-      <h2>Our services</h2>
-      <p class="section-lead muted">Full-service plumbing.</p>
-      <div class="grid cards top16">
-        <div class="card">
-          <strong>Drain cleaning</strong>
-          <p class="muted">Clogs, sewer lines, hydro-jetting.</p>
-        </div>
-        <div class="card">
-          <strong>Water heaters</strong>
-          <p class="muted">Install, repair, tank and tankless.</p>
-        </div>
-        <div class="card">
-          <strong>Repairs &amp; installations</strong>
-          <p class="muted">Leaks, fixtures, repipes.</p>
-        </div>
-      </div>
-      <p class="top16"><a href="../../quote.html" class="btn primary">Get a Quote</a></p>
-    </div>
-  </section>
-
-  <section id="gallery" class="scroll-margin">
-    <div class="wrap">
-      <h2>Gallery</h2>
-      <p class="section-lead muted">Recent jobs and installations.</p>
-      <!-- Add to assets/demos/plumber/: gallery1.jpg, gallery2.jpg, gallery3.jpg -->
-      <div class="grid cards top16 gallery-grid">
-        <div class="card"><div class="portfolio-card"><img src="../../assets/demos/plumber/gallery1.jpg" alt="Job 1" class="gallery-img" /></div></div>
-        <div class="card"><div class="portfolio-card"><img src="../../assets/demos/plumber/gallery2.jpg" alt="Job 2" class="gallery-img" /></div></div>
-        <div class="card"><div class="portfolio-card"><img src="../../assets/demos/plumber/gallery3.jpg" alt="Job 3" class="gallery-img" /></div></div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80" alt="Plumber at work" />
       </div>
     </div>
   </section>
 
-  <section id="contact" class="scroll-margin">
-    <div class="wrap">
-      <h2>Contact</h2>
-      <p class="section-lead muted">Request a quote or call for emergency service.</p>
-      <div class="cta-row">
-        <a class="btn" href="tel:+14694436874" data-kweb-phone>Call</a>
-        <a class="btn primary" href="../../quote.html">Get a Quote</a>
+  <section id="services" class="section section-services">
+    <div class="container">
+      <h2 class="section-title">Our services</h2>
+      <p class="section-lead">From routine maintenance to emergency repairs.</p>
+      <ul class="services-list">
+        <li>
+          <span class="service-num">01</span>
+          <div>
+            <h3>Drain cleaning</h3>
+            <p>Clogs, sewer lines, hydro-jetting. We get things flowing again.</p>
+          </div>
+        </li>
+        <li>
+          <span class="service-num">02</span>
+          <div>
+            <h3>Water heaters</h3>
+            <p>Install, repair, tank and tankless. Same-day service when possible.</p>
+          </div>
+        </li>
+        <li>
+          <span class="service-num">03</span>
+          <div>
+            <h3>Repairs &amp; installations</h3>
+            <p>Leaks, fixtures, repipes. Quality work at fair prices.</p>
+          </div>
+        </li>
+      </ul>
+      <p class="section-cta"><a href="../../quote.html" class="btn btn-primary">Request a Quote</a></p>
+    </div>
+  </section>
+
+  <section id="gallery" class="section section-gallery">
+    <div class="container">
+      <h2 class="section-title">Recent jobs</h2>
+      <p class="section-lead">Installations and repairs across the DFW area.</p>
+      <div class="gallery-wrap">
+        <div class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=500&q=80" alt="Plumbing installation" loading="lazy" />
+          <p>Water heater install</p>
+        </div>
+        <div class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=500&q=80" alt="Pipe work" loading="lazy" />
+          <p>Pipe repair</p>
+        </div>
+        <div class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1621905251189-08b45d6e6f3e?w=500&q=80" alt="Bathroom plumbing" loading="lazy" />
+          <p>Bathroom fixture</p>
+        </div>
       </div>
-      <p class="small top14">This is a demo. Get Quote sends leads to KWebDevelopment.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="section section-contact">
+    <div class="container container-narrow">
+      <h2 class="section-title">Need a plumber?</h2>
+      <p class="section-lead">Request a quote or call for emergency service. We’re here 24/7.</p>
+      <div class="contact-actions">
+        <a href="tel:+14694436874" class="btn btn-primary btn-large" data-kweb-phone>📞 Call (469) 443-6874</a>
+        <a href="../../quote.html" class="btn btn-secondary btn-large">Get a Quote</a>
+      </div>
+      <p class="demo-note">Demo site · Get Quote sends leads to KWebDevelopment</p>
     </div>
   </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <a href="../../index.html">Back to KWebDevelopment</a>
-    <a href="../../quote.html" class="btn primary">Get a Quote</a>
-    <span class="small">Demo site</span>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <a href="../../index.html">← Back to KWebDevelopment</a>
+    <a href="../../quote.html" class="btn btn-secondary">Get a Quote</a>
   </div>
 </footer>
 
-<div class="demo-sticky-cta">
-  <a class="btn" href="tel:+14694436874" data-kweb-phone>Call</a>
-  <a class="btn primary" href="../../quote.html">Get a Quote</a>
+<div class="sticky-bar">
+  <a href="tel:+14694436874" class="btn btn-secondary" data-kweb-phone>Call</a>
+  <a href="../../quote.html" class="btn btn-primary">Get a Quote</a>
 </div>
+
 <script src="../../assets/js/config.js"></script>
 <script src="../../script.js"></script>
 </body>

@@ -1,0 +1,20 @@
+---
+description: Automatically publish (commit and push) after completing user-requested changes
+alwaysApply: true
+---
+
+# Auto-publish after changes
+
+Whenever the user asks you to make changes (edits, new features, fixes, etc.):
+
+1. **Complete the requested work** as usual.
+2. **Then publish automatically** so the user can see changes instantly:
+   - Run: `git add -A`
+   - Commit: use `/usr/bin/git -C <workspace_root> commit -m "<short description>"` (system git avoids Cursor's --trailer injection that can break on older git)
+   - Push: `git push` (or `/usr/bin/git -C <workspace_root> push`)
+
+Use a short, descriptive commit message (e.g. "Add contact form", "Fix demo nav", "Update pricing section"). If the user gave a clear task, use that; otherwise summarize the change in a few words.
+
+If there are no changes to commit (nothing staged or already committed), skip the commit step and say so. If push fails due to auth or network, tell the user to run `git push` in their terminal.
+
+Workspace root: use the absolute path from user_info (e.g. `/Users/kareemkhalifa/kwebdevelopment`).
