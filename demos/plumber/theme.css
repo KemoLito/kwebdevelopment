@@ -1,14 +1,17 @@
 /* Plumber demo — clean, light blue, trustworthy (not agency) */
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
+  overflow-x: hidden;
   font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 17px;
   line-height: 1.65;
   color: #1e3a5f;
   background: #f0f7ff;
+  -webkit-tap-highlight-color: transparent;
 }
+img { max-width: 100%; height: auto; }
 
 a { color: #0284c7; text-decoration: none; }
 a:hover { text-decoration: underline; }
@@ -91,6 +94,7 @@ a:hover { text-decoration: underline; }
 .btn {
   display: inline-block;
   padding: 14px 26px;
+  min-height: 44px;
   font-size: 1rem;
   font-weight: 700;
   font-family: inherit;
@@ -98,6 +102,7 @@ a:hover { text-decoration: underline; }
   cursor: pointer;
   transition: background 0.2s, color 0.2s, transform 0.15s;
   border: none;
+  -webkit-tap-highlight-color: transparent;
 }
 .btn:hover { text-decoration: none; }
 .btn-primary {
@@ -269,7 +274,7 @@ a:hover { text-decoration: underline; }
 .site-footer .btn-secondary { background: rgba(255,255,255,0.2); color: #fff; }
 .site-footer .btn-secondary:hover { background: rgba(255,255,255,0.3); color: #fff; }
 
-/* Sticky CTA */
+/* Sticky CTA — safe area for iOS notch / Android nav */
 .sticky-bar {
   position: fixed;
   bottom: 0;
@@ -277,14 +282,18 @@ a:hover { text-decoration: underline; }
   right: 0;
   background: #0c4a6e;
   padding: 12px 24px;
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+  padding-left: max(24px, env(safe-area-inset-left));
+  padding-right: max(24px, env(safe-area-inset-right));
   display: flex;
   justify-content: center;
   gap: 12px;
   z-index: 99;
   box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
 }
+.sticky-bar .btn { min-height: 44px; }
 .sticky-bar .btn-primary { background: #fff; color: #0c4a6e; }
 .sticky-bar .btn-primary:hover { background: #e0f2fe; color: #0c4a6e; }
 .sticky-bar .btn-secondary { background: transparent; color: #fff; border: 2px solid #bae6fd; }
 .sticky-bar .btn-secondary:hover { background: rgba(255,255,255,0.1); color: #fff; }
-main { padding-bottom: 80px; }
+main { padding-bottom: max(80px, calc(80px + env(safe-area-inset-bottom))); }

@@ -1,14 +1,17 @@
 /* General Contractor demo — warm, rugged, client-style (not agency) */
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
+  overflow-x: hidden;
   font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 18px;
   line-height: 1.6;
   color: #2c1810;
   background: #f5ebe0;
+  -webkit-tap-highlight-color: transparent;
 }
+img { max-width: 100%; height: auto; }
 
 a { color: #8b4513; text-decoration: none; }
 a:hover { text-decoration: underline; }
@@ -104,6 +107,7 @@ a:hover { text-decoration: underline; }
 .btn {
   display: inline-block;
   padding: 14px 28px;
+  min-height: 44px;
   font-size: 1rem;
   font-weight: 700;
   font-family: inherit;
@@ -111,6 +115,7 @@ a:hover { text-decoration: underline; }
   cursor: pointer;
   transition: background 0.2s, color 0.2s, border-color 0.2s;
   border: 2px solid transparent;
+  -webkit-tap-highlight-color: transparent;
 }
 .btn-primary {
   background: #8b4513;
@@ -256,7 +261,7 @@ a:hover { text-decoration: underline; }
 .site-footer a { color: #c4956a; }
 .site-footer a:hover { color: #e8d5c4; }
 
-/* Sticky CTA */
+/* Sticky CTA — safe area for iOS notch / Android nav */
 .sticky-bar {
   position: fixed;
   bottom: 0;
@@ -264,14 +269,18 @@ a:hover { text-decoration: underline; }
   right: 0;
   background: #2c1810;
   padding: 12px 24px;
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+  padding-left: max(24px, env(safe-area-inset-left));
+  padding-right: max(24px, env(safe-area-inset-right));
   display: flex;
   justify-content: center;
   gap: 12px;
   z-index: 99;
   box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
 }
+.sticky-bar .btn { min-height: 44px; -webkit-tap-highlight-color: transparent; }
 .sticky-bar .btn-outline { color: #e8d5c4; border-color: #e8d5c4; }
 .sticky-bar .btn-outline:hover { background: rgba(255,255,255,0.1); color: #f5ebe0; }
 .sticky-bar .btn-primary { background: #c4956a; border-color: #c4956a; color: #2c1810; }
 .sticky-bar .btn-primary:hover { background: #d4a574; border-color: #d4a574; color: #2c1810; }
-main { padding-bottom: 80px; }
+main { padding-bottom: max(80px, calc(80px + env(safe-area-inset-bottom))); }

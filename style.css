@@ -24,15 +24,21 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
 body {
   margin: 0;
+  overflow-x: hidden;
   font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.6;
   color: var(--color-text);
   background: var(--color-bg);
+  -webkit-tap-highlight-color: transparent;
 }
+img { max-width: 100%; height: auto; }
 a { color: var(--color-text); text-decoration: none; }
 a:not(.btn):hover { text-decoration: underline; text-underline-offset: 2px; }
 
@@ -40,12 +46,16 @@ a:not(.btn):hover { text-decoration: underline; text-underline-offset: 2px; }
   max-width: var(--max);
   margin: 0 auto;
   padding: 0 20px;
+  padding-left: max(20px, env(safe-area-inset-left));
+  padding-right: max(20px, env(safe-area-inset-right));
 }
 
 /* Header */
 header {
   position: sticky;
   top: 0;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
   background: var(--color-bg);
   border-bottom: 1px solid var(--color-border);
   z-index: 10;
@@ -75,7 +85,10 @@ nav {
 .links a {
   font-size: 0.9rem;
   color: var(--color-text-muted);
-  padding: 8px 12px;
+  padding: 12px 14px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   border-radius: var(--radius);
   border: 1px solid transparent;
   transition: border-color 0.2s, color 0.2s;
@@ -85,12 +98,13 @@ nav {
 
 .nav-cta { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 
-/* All buttons: outlined only — black bg, white border, white text */
+/* All buttons: outlined only — black bg, white border, white text; min 44px touch target */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 12px 20px;
+  min-height: 44px;
   border-radius: var(--radius);
   font-weight: 700;
   font-size: 0.9rem;
@@ -100,6 +114,7 @@ nav {
   color: var(--color-text);
   cursor: pointer;
   transition: border-color 0.2s, background 0.2s;
+  -webkit-tap-highlight-color: transparent;
 }
 .btn:hover { border-color: var(--color-border-hover); background: rgba(255,255,255,0.06); }
 .btn:focus-visible { outline: none; border-color: var(--color-border-hover); box-shadow: var(--focus-ring); }
@@ -426,7 +441,8 @@ h2 {
 .form-group select,
 .form-group textarea {
   width: 100%;
-  padding: 12px 14px;
+  padding: 14px 16px;
+  min-height: 48px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   font-size: 16px;
@@ -434,6 +450,15 @@ h2 {
   background: var(--color-bg);
   color: var(--color-text);
   transition: border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.form-group textarea { min-height: 120px; }
+.form-group select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23fff' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
 }
 .form-group input::placeholder,
 .form-group textarea::placeholder {
@@ -478,6 +503,8 @@ ul { margin: 10px 0 0; padding-left: 20px; line-height: 1.7; color: var(--color-
 /* Mobile nav */
 .nav-toggle {
   display: none;
+  min-width: 44px;
+  min-height: 44px;
   background: var(--color-bg);
   border: 1px solid var(--color-border);
   color: var(--color-text);
@@ -485,6 +512,7 @@ ul { margin: 10px 0 0; padding-left: 20px; line-height: 1.7; color: var(--color-
   border-radius: var(--radius);
   cursor: pointer;
   font-size: 1rem;
+  -webkit-tap-highlight-color: transparent;
 }
 .nav-toggle:hover { border-color: var(--color-border-hover); background: rgba(255,255,255,0.06); }
 .nav-toggle:focus-visible { outline: none; border-color: var(--color-border-hover); box-shadow: var(--focus-ring); }
@@ -499,10 +527,21 @@ ul { margin: 10px 0 0; padding-left: 20px; line-height: 1.7; color: var(--color-
     right: 0;
     background: var(--color-bg);
     padding: 16px;
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
     border-bottom: 1px solid var(--color-border);
     gap: 4px;
   }
+  .links.open a { min-height: 48px; }
   nav { justify-content: space-between; position: relative; }
   .nav-toggle { display: block; }
   .hero-grid { grid-template-columns: 1fr; }
+}
+
+/* Safe area for fixed / sticky bottom bars when present (demos use .sticky-bar) */
+.sticky-bar,
+.demo-sticky-cta {
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+  padding-left: max(24px, env(safe-area-inset-left));
+  padding-right: max(24px, env(safe-area-inset-right));
 }
